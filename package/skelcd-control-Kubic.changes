@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar  6 12:43:11 UTC 2018 - rbrown@suse.com
+
+- Remove obsolete POTFILES
+- Correct default partition size to be MicroOS and carry exceptions
+  in other system roles
+- Various other restructuring as a result of in MicroOS as default
+- (bsc#1083909)
+- 15.0.1
+
+-------------------------------------------------------------------
 Wed Feb 21 15:05:21 UTC 2018 - rbrown@suse.com
 
 - Initial Version (fork from skelcd-control-CAASP)
