@@ -108,7 +108,7 @@ textdomain="control"
         <!-- bnc#875350: Explicitly selecting these patterns by default -->
         <!-- For a list of patterns, see https://build.suse.de/package/view_file/SUSE:SLE-12-SP2:Update:Products:CASP10/patterns-caasp/patterns-caasp.spec?expand=1 -->
 
-        <default_patterns>SUSE-MicroOS SUSE-MicroOS-hardware SUSE-MicroOS-apparmor SUSE-CaaSP-Stack</default_patterns>
+        <default_patterns>SUSE-MicroOS SUSE-MicroOS-hardware SUSE-MicroOS-apparmor</default_patterns>
         <!-- bnc#876760: Explicitly selecting these (optional) patterns by default if they exist -->
         <optional_default_patterns>32bit</optional_default_patterns>
 
@@ -141,7 +141,7 @@ textdomain="control"
                 <!-- Default == final, since the user can't change it -->
                 <fs_type>btrfs</fs_type>
                 <desired_size config:type="disksize">25 GiB</desired_size>
-                <min_size config:type="disksize">20 GiB</min_size>
+                <min_size config:type="disksize">16 GiB</min_size>
                 <max_size config:type="disksize">30 GiB</max_size>
                 <weight config:type="integer">80</weight>
                 <!-- Always use snapshots, no matter what -->
@@ -201,28 +201,6 @@ textdomain="control"
                 </subvolumes>
             </volume>
 
-            <!-- use /var/lib/docker as separate partition if 10+ GB available (fate#323532) -->
-            <volume>
-                <mount_point>/var/lib/docker</mount_point>
-                <!-- Default == final, since the user can't change it -->
-                <fs_type>btrfs</fs_type>
-                <snapshots config:type="boolean">false</snapshots>
-                <snapshots_configurable config:type="boolean">false</snapshots_configurable>
-
-                <desired_size config:type="disksize">15 GiB</desired_size>
-                <min_size config:type="disksize">10 GiB</min_size>
-                <max_size config:type="disksize">unlimited</max_size>
-                <weight config:type="integer">20</weight>
-
-                <!-- Give up in a separate partition if the min size doesn't fit -->
-                <disable_order config:type="integer">1</disable_order>
-
-                <!-- If this volume is disabled, we want "/" to increase -->
-                <fallback_for_desired_size>/</fallback_for_desired_size>
-                <fallback_for_max_size>/</fallback_for_max_size>
-                <fallback_for_weight>/</fallback_for_weight>
-            </volume>
-
             <!-- No swap partition is defined, so it's never created -->
         </volumes>
     </partitioning>
@@ -249,36 +227,9 @@ textdomain="control"
           <service><name>admin-node-setup</name></service>
         </services>
 
+        <default_patterns>SUSE-MicroOS SUSE-MicroOS-hardware SUSE-MicroOS-apparmor SUSE-CaaSP-Stack</default_patterns>
+
         <order config:type="integer">300</order>
-      </system_role>
-
-      <system_role>
-        <id>worker_role</id>
-
-        <services config:type="list">
-          <service><name>docker</name></service>
-          <service><name>container-feeder</name></service>
-          <service><name>salt-minion</name></service>
-        </services>
-
-        <order config:type="integer">400</order>
-      </system_role>
-
-      <system_role>
-        <id>none_role</id>
-
-        <order config:type="integer">200</order>
-
-      </system_role>
-
-      <system_role>
-        <id>micro_os_role</id>
-
-	<order config:type="integer">100</order>
-
-        <software>
-            <default_patterns>SUSE-MicroOS SUSE-MicroOS-hardware SUSE-MicroOS-apparmor</default_patterns>
-        </software>
         <partitioning>
             <expert_partitioner_warning config:type="boolean">true</expert_partitioner_warning>
 
@@ -295,7 +246,7 @@ textdomain="control"
                     <!-- Default == final, since the user can't change it -->
                     <fs_type>btrfs</fs_type>
                     <desired_size config:type="disksize">25 GiB</desired_size>
-                    <min_size config:type="disksize">16 GiB</min_size>
+                    <min_size config:type="disksize">20 GiB</min_size>
                     <max_size config:type="disksize">30 GiB</max_size>
                     <weight config:type="integer">80</weight>
                     <!-- Always use snapshots, no matter what -->
@@ -355,9 +306,262 @@ textdomain="control"
                     </subvolumes>
                 </volume>
 
+                <!-- use /var/lib/docker as separate partition if 10+ GB available (fate#323532) -->
+                <volume>
+                    <mount_point>/var/lib/docker</mount_point>
+                    <!-- Default == final, since the user can't change it -->
+                    <fs_type>btrfs</fs_type>
+                    <snapshots config:type="boolean">false</snapshots>
+                    <snapshots_configurable config:type="boolean">false</snapshots_configurable>
+
+                    <desired_size config:type="disksize">15 GiB</desired_size>
+                    <min_size config:type="disksize">10 GiB</min_size>
+                    <max_size config:type="disksize">unlimited</max_size>
+                    <weight config:type="integer">20</weight>
+
+                    <!-- Give up in a separate partition if the min size doesn't fit -->
+                    <disable_order config:type="integer">1</disable_order>
+
+                    <!-- If this volume is disabled, we want "/" to increase -->
+                    <fallback_for_desired_size>/</fallback_for_desired_size>
+                    <fallback_for_max_size>/</fallback_for_max_size>
+                    <fallback_for_weight>/</fallback_for_weight>
+                </volume>
+
                 <!-- No swap partition is defined, so it's never created -->
             </volumes>
         </partitioning>
+      </system_role>
+
+      <system_role>
+        <id>worker_role</id>
+
+        <services config:type="list">
+          <service><name>docker</name></service>
+          <service><name>container-feeder</name></service>
+          <service><name>salt-minion</name></service>
+        </services>
+
+        <default_patterns>SUSE-MicroOS SUSE-MicroOS-hardware SUSE-MicroOS-apparmor SUSE-CaaSP-Stack</default_patterns>
+
+        <order config:type="integer">400</order>
+        <partitioning>
+            <expert_partitioner_warning config:type="boolean">true</expert_partitioner_warning>
+
+            <proposal>
+                <lvm config:type="boolean">false</lvm>
+                <proposal_settings_editable config:type="boolean">false</proposal_settings_editable>
+                <root_subvolume_read_only config:type="boolean">true</root_subvolume_read_only>
+            </proposal>
+
+            <volumes config:type="list">
+                <!-- The / filesystem -->
+                <volume>
+                    <mount_point>/</mount_point>
+                    <!-- Default == final, since the user can't change it -->
+                    <fs_type>btrfs</fs_type>
+                    <desired_size config:type="disksize">25 GiB</desired_size>
+                    <min_size config:type="disksize">20 GiB</min_size>
+                    <max_size config:type="disksize">30 GiB</max_size>
+                    <weight config:type="integer">80</weight>
+                    <!-- Always use snapshots, no matter what -->
+                    <snapshots config:type="boolean">true</snapshots>
+                    <snapshots_configurable config:type="boolean">false</snapshots_configurable>
+
+                    <!-- You don't want to miss the / volume -->
+                    <proposed_configurable config:type="boolean">false</proposed_configurable>
+
+                    <!-- the default subvolume "@" was requested by product management -->
+                    <btrfs_default_subvolume>@</btrfs_default_subvolume>
+
+                    <!-- Subvolumes to be created for a Btrfs root file system -->
+                    <!-- copy_on_write is true by default -->
+                    <!-- The XML parser is very simplistic, thus not using attributes, but sub-elements -->
+                    <subvolumes config:type="list">
+                        <subvolume>
+                            <path>root</path>
+                        </subvolume>
+                        <subvolume>
+                            <path>tmp</path>
+                        </subvolume>
+                        <subvolume>
+                            <path>home</path>
+                        </subvolume>
+                        <subvolume>
+                            <path>cloud-init-config</path>
+                        </subvolume>
+                        <!-- unified var subvolume - https://lists.opensuse.org/opensuse-packaging/2017-11/msg00017.html -->
+                        <subvolume>
+                            <path>var</path>
+                            <copy_on_write config:type="boolean">false</copy_on_write>
+                        </subvolume>
+
+                        <!-- architecture specific subvolumes -->
+
+                        <subvolume>
+                            <path>boot/grub2/arm64-efi</path>
+                            <archs>aarch64</archs>
+                        </subvolume>
+                        <subvolume>
+                            <path>boot/grub2/i386-pc</path>
+                            <archs>x86_64</archs>
+                        </subvolume>
+                        <subvolume>
+                            <path>boot/grub2/powerpc-ieee1275</path>
+                            <archs>ppc,!board_powernv</archs>
+                        </subvolume>
+                        <subvolume>
+                            <path>boot/grub2/s390x-emu</path>
+                            <archs>s390</archs>
+                        </subvolume>
+                        <subvolume>
+                            <path>boot/grub2/x86_64-efi</path>
+                            <archs>x86_64</archs>
+                        </subvolume>
+                    </subvolumes>
+                </volume>
+
+                <!-- use /var/lib/docker as separate partition if 10+ GB available (fate#323532) -->
+                <volume>
+                    <mount_point>/var/lib/docker</mount_point>
+                    <!-- Default == final, since the user can't change it -->
+                    <fs_type>btrfs</fs_type>
+                    <snapshots config:type="boolean">false</snapshots>
+                    <snapshots_configurable config:type="boolean">false</snapshots_configurable>
+
+                    <desired_size config:type="disksize">15 GiB</desired_size>
+                    <min_size config:type="disksize">10 GiB</min_size>
+                    <max_size config:type="disksize">unlimited</max_size>
+                    <weight config:type="integer">20</weight>
+
+                    <!-- Give up in a separate partition if the min size doesn't fit -->
+                    <disable_order config:type="integer">1</disable_order>
+
+                    <!-- If this volume is disabled, we want "/" to increase -->
+                    <fallback_for_desired_size>/</fallback_for_desired_size>
+                    <fallback_for_max_size>/</fallback_for_max_size>
+                    <fallback_for_weight>/</fallback_for_weight>
+                </volume>
+
+                <!-- No swap partition is defined, so it's never created -->
+            </volumes>
+        </partitioning>
+      </system_role>
+
+      <system_role>
+        <id>none_role</id>
+
+        <default_patterns>SUSE-MicroOS SUSE-MicroOS-hardware SUSE-MicroOS-apparmor SUSE-CaaSP-Stack</default_patterns>
+
+        <order config:type="integer">200</order>
+        <partitioning>
+            <expert_partitioner_warning config:type="boolean">true</expert_partitioner_warning>
+
+            <proposal>
+                <lvm config:type="boolean">false</lvm>
+                <proposal_settings_editable config:type="boolean">false</proposal_settings_editable>
+                <root_subvolume_read_only config:type="boolean">true</root_subvolume_read_only>
+            </proposal>
+
+            <volumes config:type="list">
+                <!-- The / filesystem -->
+                <volume>
+                    <mount_point>/</mount_point>
+                    <!-- Default == final, since the user can't change it -->
+                    <fs_type>btrfs</fs_type>
+                    <desired_size config:type="disksize">25 GiB</desired_size>
+                    <min_size config:type="disksize">20 GiB</min_size>
+                    <max_size config:type="disksize">30 GiB</max_size>
+                    <weight config:type="integer">80</weight>
+                    <!-- Always use snapshots, no matter what -->
+                    <snapshots config:type="boolean">true</snapshots>
+                    <snapshots_configurable config:type="boolean">false</snapshots_configurable>
+
+                    <!-- You don't want to miss the / volume -->
+                    <proposed_configurable config:type="boolean">false</proposed_configurable>
+
+                    <!-- the default subvolume "@" was requested by product management -->
+                    <btrfs_default_subvolume>@</btrfs_default_subvolume>
+
+                    <!-- Subvolumes to be created for a Btrfs root file system -->
+                    <!-- copy_on_write is true by default -->
+                    <!-- The XML parser is very simplistic, thus not using attributes, but sub-elements -->
+                    <subvolumes config:type="list">
+                        <subvolume>
+                            <path>root</path>
+                        </subvolume>
+                        <subvolume>
+                            <path>tmp</path>
+                        </subvolume>
+                        <subvolume>
+                            <path>home</path>
+                        </subvolume>
+                        <subvolume>
+                            <path>cloud-init-config</path>
+                        </subvolume>
+                        <!-- unified var subvolume - https://lists.opensuse.org/opensuse-packaging/2017-11/msg00017.html -->
+                        <subvolume>
+                            <path>var</path>
+                            <copy_on_write config:type="boolean">false</copy_on_write>
+                        </subvolume>
+
+                        <!-- architecture specific subvolumes -->
+
+                        <subvolume>
+                            <path>boot/grub2/arm64-efi</path>
+                            <archs>aarch64</archs>
+                        </subvolume>
+                        <subvolume>
+                            <path>boot/grub2/i386-pc</path>
+                            <archs>x86_64</archs>
+                        </subvolume>
+                        <subvolume>
+                            <path>boot/grub2/powerpc-ieee1275</path>
+                            <archs>ppc,!board_powernv</archs>
+                        </subvolume>
+                        <subvolume>
+                            <path>boot/grub2/s390x-emu</path>
+                            <archs>s390</archs>
+                        </subvolume>
+                        <subvolume>
+                            <path>boot/grub2/x86_64-efi</path>
+                            <archs>x86_64</archs>
+                        </subvolume>
+                    </subvolumes>
+                </volume>
+
+                <!-- use /var/lib/docker as separate partition if 10+ GB available (fate#323532) -->
+                <volume>
+                    <mount_point>/var/lib/docker</mount_point>
+                    <!-- Default == final, since the user can't change it -->
+                    <fs_type>btrfs</fs_type>
+                    <snapshots config:type="boolean">false</snapshots>
+                    <snapshots_configurable config:type="boolean">false</snapshots_configurable>
+
+                    <desired_size config:type="disksize">15 GiB</desired_size>
+                    <min_size config:type="disksize">10 GiB</min_size>
+                    <max_size config:type="disksize">unlimited</max_size>
+                    <weight config:type="integer">20</weight>
+
+                    <!-- Give up in a separate partition if the min size doesn't fit -->
+                    <disable_order config:type="integer">1</disable_order>
+
+                    <!-- If this volume is disabled, we want "/" to increase -->
+                    <fallback_for_desired_size>/</fallback_for_desired_size>
+                    <fallback_for_max_size>/</fallback_for_max_size>
+                    <fallback_for_weight>/</fallback_for_weight>
+                </volume>
+
+                <!-- No swap partition is defined, so it's never created -->
+            </volumes>
+        </partitioning>
+
+      </system_role>
+
+      <system_role>
+        <id>micro_os_role</id>
+
+        <order config:type="integer">100</order>
 
       </system_role>
     </system_roles>
