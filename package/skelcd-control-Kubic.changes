@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 12 15:55:32 UTC 2018 - rbrown@suse.com
+
+- Resolve invalid entries for new system roles (bsc#1083909)
+- 15.0.2
+
+-------------------------------------------------------------------
 Tue Mar  6 12:43:11 UTC 2018 - rbrown@suse.com
 
 - Remove obsolete POTFILES

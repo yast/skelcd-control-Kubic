@@ -227,7 +227,9 @@ textdomain="control"
           <service><name>admin-node-setup</name></service>
         </services>
 
-        <default_patterns>SUSE-MicroOS SUSE-MicroOS-hardware SUSE-MicroOS-apparmor SUSE-CaaSP-Stack</default_patterns>
+        <software>
+            <default_patterns>SUSE-MicroOS SUSE-MicroOS-hardware SUSE-MicroOS-apparmor SUSE-CaaSP-Stack</default_patterns>
+        </software>
 
         <order config:type="integer">300</order>
         <partitioning>
@@ -342,7 +344,9 @@ textdomain="control"
           <service><name>salt-minion</name></service>
         </services>
 
-        <default_patterns>SUSE-MicroOS SUSE-MicroOS-hardware SUSE-MicroOS-apparmor SUSE-CaaSP-Stack</default_patterns>
+        <software>
+            <default_patterns>SUSE-MicroOS SUSE-MicroOS-hardware SUSE-MicroOS-apparmor SUSE-CaaSP-Stack</default_patterns>
+        </software>
 
         <order config:type="integer">400</order>
         <partitioning>
@@ -451,7 +455,9 @@ textdomain="control"
       <system_role>
         <id>none_role</id>
 
-        <default_patterns>SUSE-MicroOS SUSE-MicroOS-hardware SUSE-MicroOS-apparmor SUSE-CaaSP-Stack</default_patterns>
+        <software>
+            <default_patterns>SUSE-MicroOS SUSE-MicroOS-hardware SUSE-MicroOS-apparmor SUSE-CaaSP-Stack</default_patterns>
+        </software>
 
         <order config:type="integer">200</order>
         <partitioning>
