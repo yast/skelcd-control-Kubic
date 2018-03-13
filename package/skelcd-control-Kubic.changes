@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 13 15:29:10 UTC 2018 - rbrown@suse.com
+
+- Replace root_subvolume_read_only with btrfs_read_only (related
+  to bsc#1079000).
+- 15.0.3
+
+-------------------------------------------------------------------
 Mon Mar 12 15:55:32 UTC 2018 - rbrown@suse.com
 
 - Resolve invalid entries for new system roles (bsc#1083909)
