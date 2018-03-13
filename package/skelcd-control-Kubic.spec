@@ -31,7 +31,7 @@ Name:           skelcd-control-Kubic
 # xmllint (for validation)
 BuildRequires:  libxml2-tools
 # RNG validation schema
-BuildRequires:  yast2-installation-control >= 4.0.0
+BuildRequires:  yast2-installation-control >= 4.0.10
 
 %if 0%{?is_opensuse}
 # xsltproc - for building control.TWKubic.xml from control.Kubic.xml
@@ -111,7 +111,7 @@ Requires:       yast2-vm
 
 Url:            https://github.com/yast/skelcd-control-Kubic
 AutoReqProv:    off
-Version:        15.0.2
+Version:        15.0.3
 Release:        0
 Summary:        The Kubic control file needed for installation
 License:        MIT
