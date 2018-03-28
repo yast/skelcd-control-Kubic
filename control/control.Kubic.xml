@@ -686,6 +686,26 @@ configured accordingly to match the use case of the role. &lt;/p&gt;</label>
                     <label>Network Autosetup</label>
                     <name>setup_dhcp</name>
                 </module>
+                <!-- As soon as possible but after network is initialized -->
+                <module>
+                    <label>Installer Update</label>
+                    <name>update_installer</name>
+                </module>
+                <!-- We need to initialize libzypp in order to read product's license -->
+                <module>
+                    <label>Repositories Initialization</label>
+                    <name>repositories_initialization</name>
+                </module>
+                <module>
+                    <label>Welcome</label>
+                    <name>complex_welcome</name>
+                    <enable_back>no</enable_back>
+                    <enable_next>yes</enable_next>
+                    <arguments>
+                        <first_run>yes</first_run>
+                    </arguments>
+                    <retranslate config:type="boolean">true</retranslate>
+                </module>
                 <module>
                     <label>Network Activation</label>
                     <name>lan</name>
@@ -708,13 +728,27 @@ configured accordingly to match the use case of the role. &lt;/p&gt;</label>
                     <name>download_release_notes</name>
                 </module>
                 <module>
+                    <name>system_role</name>
+                </module>
+                <module>
+                    <label>Disk</label>
+                    <name>disk_proposal</name>
+                    <enable_back>yes</enable_back>
+                    <enable_next>yes</enable_next>
+                </module>
+                <module>
+                    <label>User Settings</label>
+                    <name>root_first</name>
+                </module>
+                <module>
                     <heading>yes</heading>
                     <label>Installation</label>
                 </module>
                 <module>
-                    <name>casp_overview</name>
-                    <enable_back>yes</enable_back>
-                    <enable_next>yes</enable_next>
+                    <label>Installation Overview</label>
+                    <name>initial_installation_proposal</name>
+                    <execute>inst_proposal</execute>
+                    <proposal>initial</proposal>
                 </module>
                 <!-- FATE #303860: Provide consistent progress during installation -->
                 <module>
