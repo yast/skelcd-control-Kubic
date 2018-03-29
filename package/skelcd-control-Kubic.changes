@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 29 07:28:11 UTC 2018 - rbrown@suse.com
+
+- Allow installation proposal configuration (boo#1087392)
+- 15.0.5
+
+-------------------------------------------------------------------
 Tue Mar 27 11:32:15 UTC 2018 - rbrown@suse.com
 
 - Implement multi-stage installation workflow (boo#1084466)
