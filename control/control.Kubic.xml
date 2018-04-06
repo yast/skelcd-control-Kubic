@@ -131,6 +131,9 @@ textdomain="control"
         <proposal>
             <lvm config:type="boolean">false</lvm>
             <proposal_settings_editable config:type="boolean">true</proposal_settings_editable>
+            <windows_delete_mode config:type="symbol">all</windows_delete_mode>
+            <linux_delete_mode config:type="symbol">all</linux_delete_mode>
+            <other_delete_mode config:type="symbol">all</other_delete_mode>
         </proposal>
 
         <volumes config:type="list">
@@ -680,7 +683,7 @@ configured accordingly to match the use case of the role. &lt;/p&gt;</label>
             <proposal_modules config:type="list">
                 <proposal_module>
                     <name>bootloader</name>
-                    <presentation_order>20</presentation_order>
+                    <presentation_order>30</presentation_order>
                 </proposal_module>
                 <proposal_module>
                     <name>hwinfo</name>
@@ -689,19 +692,12 @@ configured accordingly to match the use case of the role. &lt;/p&gt;</label>
                 <!-- software proposal should be computed almost at the end -->
                 <proposal_module>
                     <name>software</name>
-                    <presentation_order>30</presentation_order>
+                    <presentation_order>20</presentation_order>
                 </proposal_module>
                 <proposal_module>
-        <!-- propose the default runlevel after software is selected, bnc #380141 -->
-                    <name>default_target</name>
-                    <presentation_order>70</presentation_order>
+                    <name>kdump</name>
+                    <presentation_order>50</presentation_order>
                 </proposal_module>
-                <!-- FaTE #303859 - simple network (in fact firewall) cfg in 1st stage -->
-                <proposal_module>
-                    <name>firewall</name>
-                    <presentation_order>95</presentation_order>
-                </proposal_module>
-                <!-- Fate #319624 - proposal and dialog for existing SSH host keys -->
                 <proposal_module>
                     <name>ssh_import</name>
                     <presentation_order>97</presentation_order>
