@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr  6 14:20:55 UTC 2018 - rbrown@suse.com
+
+- Various changes to installation proposal summary (boo#1088456)
+- Add kdump module
+- Remove SSH/Firewall module
+- Remove Default SystemD Target module
+- Always propose full disk allocation
+- 15.0.6
+
+-------------------------------------------------------------------
 Thu Mar 29 07:28:11 UTC 2018 - rbrown@suse.com
 
 - Allow installation proposal configuration (boo#1087392)
