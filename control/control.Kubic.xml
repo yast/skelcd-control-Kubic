@@ -108,7 +108,7 @@ textdomain="control"
         <!-- bnc#875350: Explicitly selecting these patterns by default -->
         <!-- For a list of patterns, see https://build.suse.de/package/view_file/SUSE:SLE-12-SP2:Update:Products:CASP10/patterns-caasp/patterns-caasp.spec?expand=1 -->
 
-        <default_patterns>SUSE-MicroOS SUSE-MicroOS-hardware SUSE-MicroOS-apparmor</default_patterns>
+        <default_patterns>SUSE-MicroOS SUSE-MicroOS-hardware SUSE-MicroOS-apparmor SUSE-MicroOS-container-runtime</default_patterns>
         <!-- bnc#876760: Explicitly selecting these (optional) patterns by default if they exist -->
         <optional_default_patterns>32bit</optional_default_patterns>
 
@@ -232,7 +232,7 @@ textdomain="control"
         </services>
 
         <software>
-            <default_patterns>SUSE-MicroOS SUSE-MicroOS-hardware SUSE-MicroOS-apparmor SUSE-CaaSP-Stack</default_patterns>
+            <default_patterns>SUSE-MicroOS SUSE-MicroOS-hardware SUSE-MicroOS-apparmor SUSE-CaaSP-Stack SUSE-MicroOS-container-runtime</default_patterns>
         </software>
 
         <order config:type="integer">300</order>
@@ -350,7 +350,7 @@ textdomain="control"
         </services>
 
         <software>
-            <default_patterns>SUSE-MicroOS SUSE-MicroOS-hardware SUSE-MicroOS-apparmor SUSE-CaaSP-Stack</default_patterns>
+            <default_patterns>SUSE-MicroOS SUSE-MicroOS-hardware SUSE-MicroOS-apparmor SUSE-CaaSP-Stack SUSE-MicroOS-container-runtime</default_patterns>
         </software>
 
         <order config:type="integer">400</order>
@@ -462,7 +462,7 @@ textdomain="control"
         <id>none_role</id>
 
         <software>
-            <default_patterns>SUSE-MicroOS SUSE-MicroOS-hardware SUSE-MicroOS-apparmor SUSE-CaaSP-Stack</default_patterns>
+            <default_patterns>SUSE-MicroOS SUSE-MicroOS-hardware SUSE-MicroOS-apparmor SUSE-CaaSP-Stack SUSE-MicroOS-container-runtime</default_patterns>
         </software>
 
         <order config:type="integer">200</order>
