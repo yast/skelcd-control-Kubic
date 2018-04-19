@@ -683,7 +683,7 @@ configured accordingly to match the use case of the role. &lt;/p&gt;</label>
             <proposal_modules config:type="list">
                 <proposal_module>
                     <name>bootloader</name>
-                    <presentation_order>30</presentation_order>
+                    <presentation_order>40</presentation_order>
                 </proposal_module>
                 <proposal_module>
                     <name>hwinfo</name>
@@ -693,6 +693,14 @@ configured accordingly to match the use case of the role. &lt;/p&gt;</label>
                 <proposal_module>
                     <name>software</name>
                     <presentation_order>20</presentation_order>
+                </proposal_module>
+                <proposal_module>
+                    <name>timezone</name>
+                    <presentation_order>25</presentation_order>
+                </proposal_module>
+                <proposal_module>
+                    <name>network</name>
+                    <presentation_order>30</presentation_order>
                 </proposal_module>
                 <proposal_module>
                     <name>kdump</name>
@@ -931,11 +939,6 @@ configured accordingly to match the use case of the role. &lt;/p&gt;</label>
                 <module>
                     <label>Network Autosetup</label>
                     <name>setup_dhcp</name>
-                </module>
-                <!-- As soon as possible but after network is initialized -->
-                <module>
-                    <label>Installer Update</label>
-                    <name>update_installer</name>
                 </module>
                 <!-- We need to initialize libzypp in order to read product's license -->
                 <module>
