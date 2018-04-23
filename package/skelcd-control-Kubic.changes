@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 23 14:01:01 UTC 2018 - rbrown@suse.com
+
+- Make timezone editable (boo#1090536)
+- 15.0.9
+
+-------------------------------------------------------------------
 Thu Apr 19 14:33:31 UTC 2018 - rbrown@suse.com
 
 - Add network & timezone to proposal (boo#1088456)
