@@ -14,6 +14,7 @@ textdomain="control"
         <enable_firewall config:type="boolean">false</enable_firewall>
         <firewall_enable_ssh config:type="boolean">false</firewall_enable_ssh>
         <enable_sshd config:type="boolean">true</enable_sshd>
+        <timezone>Global/UTC</timezone>
         <readonly_timezone config:type="boolean">false</readonly_timezone>
 
         <!-- FATE #303875, see /etc/sysconfig/network/dhcp:WRITE_HOSTNAME_TO_HOSTS -->
