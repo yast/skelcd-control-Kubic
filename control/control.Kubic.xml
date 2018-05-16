@@ -355,6 +355,7 @@ textdomain="control"
           <service><name>docker</name></service>
           <service><name>container-feeder</name></service>
           <service><name>salt-minion</name></service>
+          <service><name>systemd-timesyncd</name></service>
         </services>
 
         <software>
@@ -661,28 +662,33 @@ configured accordingly to match the use case of the role. &lt;/p&gt;</label>
           <label>Admin/Dashboard Node [ALPHA]</label>
         </dashboard_role>
         <dashboard_role_description>
-          <label>• A set of tools and a dashboard for managing cluster nodes.</label>
-        </dashboard_role_description>
+          <label>• MicroOS plus Kubic Kubernetes Stack
+• Provides Velum administration dashboard
+• Should be installed before Cluster Nodes</label>
+	</dashboard_role_description>
         <worker_role>
           <!-- TRANSLATORS: a label for a system role -->
           <label>Cluster Node [ALPHA]</label>
         </worker_role>
         <worker_role_description>
-          <label>• The system is registered in a given administration dashboard.</label>
+          <label>• MicroOS plus Kubic Kubernetes Stack
+• Configured as a cluster worker node
+• Should be installed after the Admin/Dashboard Node</label>
         </worker_role_description>
         <none_role>
           <!-- TRANSLATORS: a label for a system role -->
           <label>Unconfigured Cluster Node</label>
         </none_role>
         <none_role_description>
-          <label>• No services started by default.</label>
+          <label>• MicroOS plus an unconfigured Kubic Kubernetes Stack</label>
         </none_role_description>
         <micro_os_role>
           <!-- TRANSLATORS: a label for a system role -->
           <label>openSUSE MicroOS</label>
         </micro_os_role>
         <micro_os_role_description>
-          <label>• No services started by default.</label>
+	<label>• System designed for running containers and optimised for large deployments.
+• Includes Docker Open Source Container Runtime by default</label>
         </micro_os_role_description>
     </texts>
 
