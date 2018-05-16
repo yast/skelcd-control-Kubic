@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 16 12:27:44 UTC 2018 - rbrown@suse.com
+
+- Start systemd-timesyncd on Worker System Role (boo#1087685)
+- Correct System Role descriptions (boo#1091296)
+- 15.0.13
+
+-------------------------------------------------------------------
 Fri May 11 08:52:11 UTC 2018 - rbrown@suse.com
 
 - Use systemd syntax for UTC timezone reference (boo#1090913)
