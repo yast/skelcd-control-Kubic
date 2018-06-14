@@ -234,6 +234,7 @@ textdomain="control"
           <service><name>salt-minion</name></service>
           <service><name>admin-node-setup</name></service>
           <service><name>admin-node-init</name></service>
+          <service><name>chronyd</name></service>
         </services>
 
         <software>
