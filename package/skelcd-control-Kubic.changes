@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 14 09:26:12 UTC 2018 - rbrown@suse.com
+
+- Start chronyd on Admin System Role (boo#1097625)
+- 15.0.14
+
+-------------------------------------------------------------------
 Wed May 16 12:27:44 UTC 2018 - rbrown@suse.com
 
 - Start systemd-timesyncd on Worker System Role (boo#1087685)
