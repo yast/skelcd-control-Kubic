@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 20 11:43:19 UTC 2018 - lslezak@suse.cz
+
+- yast2-registration and yast2-caasp are not used in openSUSE
+  Kubic, remove the dependencies (also fixes the build on i586
+  where these packages are not available)
+- 15.1.0
+
+-------------------------------------------------------------------
 Thu Jun 14 09:26:12 UTC 2018 - rbrown@suse.com
 
 - Start chronyd on Admin System Role (boo#1097625)
