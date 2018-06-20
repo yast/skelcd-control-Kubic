@@ -621,7 +621,6 @@ textdomain="control"
         <clone_module>kdump</clone_module>
         <clone_module>ntp-client</clone_module>
         <clone_module>ssh_import</clone_module>
-        <clone_module>scc</clone_module>
     </clone_modules>
 
     <texts>
