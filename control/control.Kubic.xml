@@ -709,6 +709,10 @@ configured accordingly to match the use case of the role. &lt;/p&gt;</label>
                     <name>hwinfo</name>
                     <presentation_order>80</presentation_order>
                 </proposal_module>
+                <proposal_module>
+                    <name>partitions</name>
+                    <presentation_order>10</presentation_order>
+                </proposal_module>
                 <!-- software proposal should be computed almost at the end -->
                 <proposal_module>
                     <name>software</name>
@@ -998,12 +1002,6 @@ configured accordingly to match the use case of the role. &lt;/p&gt;</label>
                 </module>
                 <module>
                     <name>system_role</name>
-                </module>
-                <module>
-                    <label>Disk</label>
-                    <name>disk_proposal</name>
-                    <enable_back>yes</enable_back>
-                    <enable_next>yes</enable_next>
                 </module>
                 <module>
                     <label>User Settings</label>
