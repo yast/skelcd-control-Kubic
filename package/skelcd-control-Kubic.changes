@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 25 13:08:10 UTC 2018 - rbrown@suse.com
+
+- Remove partioning from install workflow, add it to summary
+  (boo#1099005)
+- 15.1.1
+
+-------------------------------------------------------------------
 Wed Jun 20 11:43:19 UTC 2018 - lslezak@suse.cz
 
 - yast2-registration and yast2-caasp are not used in openSUSE
