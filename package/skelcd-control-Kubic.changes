@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 29 08:33:55 UTC 2018 - rbrown@suse.com
+
+- Run software proposal module last to ensure other modules can
+  influence software selection correctly
+- 15.1.2
+
+-------------------------------------------------------------------
 Mon Jun 25 13:08:10 UTC 2018 - rbrown@suse.com
 
 - Remove partioning from install workflow, add it to summary
