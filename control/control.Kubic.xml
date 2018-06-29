@@ -713,11 +713,6 @@ configured accordingly to match the use case of the role. &lt;/p&gt;</label>
                     <name>partitions</name>
                     <presentation_order>10</presentation_order>
                 </proposal_module>
-                <!-- software proposal should be computed almost at the end -->
-                <proposal_module>
-                    <name>software</name>
-                    <presentation_order>20</presentation_order>
-                </proposal_module>
                 <proposal_module>
                     <name>timezone</name>
                     <presentation_order>25</presentation_order>
@@ -737,6 +732,11 @@ configured accordingly to match the use case of the role. &lt;/p&gt;</label>
                 <proposal_module>
                     <name>clone</name>
                     <presentation_order>99</presentation_order>
+                </proposal_module>
+                <!-- software proposal should be computed almost at the end -->
+                <proposal_module>
+                    <name>software</name>
+                    <presentation_order>20</presentation_order>
                 </proposal_module>
             </proposal_modules>
         </proposal>
