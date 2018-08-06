@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 06 15:16:11 UTC 2018 - rbrown@suse.com
+
+- Remove invalid copy_on_write for /var partition (boo#1103906)
+- 15.1.4
+
+-------------------------------------------------------------------
 Mon Aug 06 12:21:34 UTC 2018 - rbrown@suse.com
 
 - Remove 'old' SUSE CaaS stack system roles (boo#1103906)
