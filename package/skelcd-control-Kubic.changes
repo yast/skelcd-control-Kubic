@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 21 15:32:55 UTC 2018 - rbrown@suse.com
+
+- Run partition proposal before bootloader proposal (boo#1099762)
+- 15.1.6
+
+-------------------------------------------------------------------
 Tue Aug 14 17:32:21 UTC 2018 - rbrown@suse.com
 
 - Make crio default, docker as alternative runtime (boo#1104821)
