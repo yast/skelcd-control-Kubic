@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 14 17:32:21 UTC 2018 - rbrown@suse.com
+
+- Make crio default, docker as alternative runtime (boo#1104821)
+- 15.1.5
+
+-------------------------------------------------------------------
 Mon Aug 06 15:16:11 UTC 2018 - rbrown@suse.com
 
 - Remove invalid copy_on_write for /var partition (boo#1103906)
