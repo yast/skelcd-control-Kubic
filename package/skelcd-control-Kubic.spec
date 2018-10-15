@@ -33,13 +33,11 @@ BuildRequires:  libxml2-tools
 # RNG validation schema
 BuildRequires:  yast2-installation-control >= 4.0.10
 
-%if 0%{?is_opensuse}
 # xsltproc - for building control.TWKubic.xml from control.Kubic.xml
 BuildRequires:  libxslt-tools
 BuildRequires:  diffutils
 # we need to copy some parts from the openSUSE control.xml to Kubic
 BuildRequires:  skelcd-control-openSUSE
-%endif
 
 ######################################################################
 #
@@ -47,15 +45,13 @@ BuildRequires:  skelcd-control-openSUSE
 # installation system (inst-sys) for the Yast installer
 #
 
-# SLES specific Yast packages needed in the inst-sys
+# Kubic specific Yast packages needed in the inst-sys
 # to provide the functionality needed by this control file
+Requires:       yast2-caasp >= 4.1.1
 
-%if 0%{?is_susecaasp}
-Requires:       yast2-theme-SLE
-%else
+# branding
 Requires:       yast2-branding-openSUSE
 Requires:       yast2-qt-branding-openSUSE
-%endif
 
 # Generic Yast packages needed for the installer
 Requires:       autoyast2
@@ -92,6 +88,23 @@ Requires:       yast2-rdp
 Conflicts:      product_control
 Provides:       product_control
 
+# we really do not need the YaST packages for building, ignore the dependencies
+# to have faster builds and less rebuilds triggered by dependencies
+# these are pulled in by the skelcd-control-openSUSE dependencies
+#!BuildIgnore: yast2-caasp yast2-branding-openSUSE yast2-qt-branding-openSUSE
+#!BuildIgnore: autoyast2 yast2-add-on yast2-buildtools yast2-devtools
+#!BuildIgnore: yast2-fcoe-client yast2-firewall
+#!BuildIgnore: yast2-installation yast2-iscsi-client yast2-kdump yast2-multipath
+#!BuildIgnore: yast2-network yast2-nfs-client yast2-ntp-client yast2-proxy
+#!BuildIgnore: yast2-services-manager yast2-slp yast2-trans-stats yast2-tune
+#!BuildIgnore: yast2-update yast2-users yast2-x11 yast2-rdp
+#!BuildIgnore: yast2-reipl yast2-s390 yast2-vm
+#!BuildIgnore: rubygem(%{rb_default_ruby_abi}:byebug)
+#!BuildIgnore: yast2-branding-openSUSE-Oxygen yast2-configuration-management
+#!BuildIgnore: yast2-core yast2-hardware-detection yast2-installation-control
+#!BuildIgnore: yast2-logs yast2-perl-bindings yast2-pkg-bindings yast2-ruby-bindings
+#!BuildIgnore: yast2 yast2-ycp-ui-bindings
+
 # Architecture specific packages
 #
 %ifarch s390 s390x
@@ -108,7 +121,7 @@ Requires:       yast2-vm
 
 Url:            https://github.com/yast/skelcd-control-Kubic
 AutoReqProv:    off
-Version:        15.1.6
+Version:        15.1.7
 Release:        0
 Summary:        The Kubic control file needed for installation
 License:        MIT
@@ -127,14 +140,12 @@ The package contains the Kubic control file needed for installation.
 
 %setup -n %{name}-%{version}
 
-%if 0%{?is_opensuse}
 %build
 # build control.TWKubic.xml from control.Kubic.xml
 make -C control control.TWKubic.xml
 # display the changes (just for easier debugging)
 # don't fail, a difference is expected
 diff -u control/control.Kubic.xml control/control.TWKubic.xml || :
-%endif
 
 %check
 #
@@ -147,14 +158,7 @@ make -C control check
 # Add control file
 #
 mkdir -p $RPM_BUILD_ROOT%{?skelcdpath}/CD1
-%if 0%{?is_susecaasp}
-install -m 644 control/control.CAASP.xml $RPM_BUILD_ROOT%{?skelcdpath}/CD1/control.xml
-%else
-%if 0%{?is_opensuse}
 install -m 644 control/control.TWKubic.xml $RPM_BUILD_ROOT%{?skelcdpath}/CD1/control.xml
-%endif
-%endif
-
 
 # install LICENSE (required by build service check)
 mkdir -p $RPM_BUILD_ROOT/%{_prefix}/share/doc/packages/%{name}
@@ -162,14 +166,12 @@ install -m 644 LICENSE $RPM_BUILD_ROOT/%{_prefix}/share/doc/packages/%{name}
 
 %files
 %defattr(644,root,root,755)
-%if 0%{?is_susecaasp}%{?is_opensuse}
 %if %{defined skelcdpath}
 %dir %{skelcdpath}
 %endif
 %dir %{?skelcdpath}/CD1
 %{?skelcdpath}/CD1/control.xml
-%endif
 %doc %dir %{_prefix}/share/doc/packages/%{name}
-%doc %{_prefix}/share/doc/packages/%{name}/LICENSE
+%license %{_prefix}/share/doc/packages/%{name}/LICENSE
 
 %changelog

@@ -1,0 +1,4 @@
+/package/*.tar.bz2
+doc/
+.yardoc/
+control.pot
