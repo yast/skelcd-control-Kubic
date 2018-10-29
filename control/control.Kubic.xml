@@ -250,6 +250,7 @@ textdomain="control"
         </software>
 
         <order config:type="integer">200</order>
+        <additional_dialogs>inst_kubic_kubeadm_role</additional_dialogs>
       </system_role>
 
       <system_role>

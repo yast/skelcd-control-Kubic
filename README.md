@@ -1,7 +1,7 @@
 skelcd-control-Kubic
 ===================
 
-[![Travis Build](https://travis-ci.org/yast/skelcd-control-Kubic.svg?branch=master)](https://travis-ci.org/yast/skelcd-control-CAASP)
+[![Travis Build](https://travis-ci.org/yast/skelcd-control-Kubic.svg?branch=master)](https://travis-ci.org/yast/skelcd-control-Kubic)
 
 
 Installation control file for openSUSE Kubic
