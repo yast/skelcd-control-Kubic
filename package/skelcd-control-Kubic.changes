@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 14 15:10:11 UTC 2018 - rbrown@suse.de
+
+- Remove /cloud-init-config subvolume (bsc#1107283)
+- version 20181115
+
+-------------------------------------------------------------------
 Wed Nov 14 08:08:36 UTC 2018 - lslezak@suse.cz
 
 - Use the *.opensuse.pool.ntp.org fallback when an NTP server

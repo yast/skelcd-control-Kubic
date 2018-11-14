@@ -173,9 +173,6 @@ textdomain="control"
                         <path>home</path>
                     </subvolume>
                     <subvolume>
-                        <path>cloud-init-config</path>
-                    </subvolume>
-                    <subvolume>
                         <path>opt</path>
                     </subvolume>
 
