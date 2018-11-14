@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 14 08:08:36 UTC 2018 - lslezak@suse.cz
+
+- Use the *.opensuse.pool.ntp.org fallback when an NTP server
+  is not set in the DHCP response (bsc#1114818)
+- Use a date based versioning (the Leap schema does not make sense
+  for the Tumbleweed based Kubic)
+- version 20181114
+
+-------------------------------------------------------------------
 Fri Oct 26 15:36:28 UTC 2018 - lslezak@suse.cz
 
 - Display a new dialog when selecting the Kubeadm role
