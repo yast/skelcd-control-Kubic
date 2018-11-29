@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 29 13:51:50 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Update yast2-theme dependency (boo#1108422)
+- 20181129
+
+-------------------------------------------------------------------
 Wed Nov 14 15:10:11 UTC 2018 - rbrown@suse.de
 
 - Remove /cloud-init-config subvolume (bsc#1107283)
