@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 11 15:46:13 UTC 2018 - Richard Brown <rbrown@suse.de>
+
+- Add container-runtime-config pattern to MicroOS role (boo#1119153)
+- 20181211
+
+-------------------------------------------------------------------
 Thu Nov 29 13:51:50 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
 
 - Update yast2-theme dependency (boo#1108422)
