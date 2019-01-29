@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 29 10:40:11 UTC 2019 - Richard Brown <rbrown@suse.de>
+
+- Add support for additional repos with addon= (boo#1123481)
+- 20190129
+
+-------------------------------------------------------------------
 Tue Jan 08 16:57:53 UTC 2019 - Richard Brown <rbrown@suse.de>
 
 - Fit microOS on 20GB disks, kubeadm on 30GB (boo#1119288)

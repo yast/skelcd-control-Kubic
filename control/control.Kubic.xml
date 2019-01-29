@@ -755,6 +755,10 @@ configured accordingly to match the use case of the role. &lt;/p&gt;</label>
                     <name>system_role</name>
                 </module>
                 <module>
+                    <label>Add-On Products</label>
+                    <name>add-on</name>
+                </module>
+                <module>
                     <label>User Settings</label>
                     <name>root_first</name>
                 </module>
