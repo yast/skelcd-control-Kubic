@@ -44,7 +44,7 @@ textdomain="control"
 
         <!-- Offer add-ons in the installation -->
         <show_addons config:type="boolean">true</show_addons>
-        <addons_default config:type="boolean">true</addons_default>
+        <addons_default config:type="boolean">false</addons_default>
 
         <!-- FATE #301937, Save /root content from the installation system to the installed system -->
         <save_instsys_content config:type="list">
