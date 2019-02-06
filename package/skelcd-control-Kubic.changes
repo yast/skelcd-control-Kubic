@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 06 09:36:35 UTC 2019 - Richard Brown <rbrown@suse.de>
+
+- Don't show addon step by default (boo#1123481)
+- 20190206
+
+-------------------------------------------------------------------
 Tue Jan 29 10:40:11 UTC 2019 - Richard Brown <rbrown@suse.de>
 
 - Add support for additional repos with addon= (boo#1123481)
