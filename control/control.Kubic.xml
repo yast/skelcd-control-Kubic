@@ -109,7 +109,7 @@ textdomain="control"
         <!-- bnc#875350: Explicitly selecting these patterns by default -->
         <!-- For a list of patterns, see https://build.suse.de/package/view_file/SUSE:SLE-12-SP2:Update:Products:CASP10/patterns-caasp/patterns-caasp.spec?expand=1 -->
 
-        <default_patterns>SUSE-MicroOS SUSE-MicroOS-hardware SUSE-MicroOS-apparmor SUSE-MicroOS-container-runtime</default_patterns>
+        <default_patterns>SUSE-MicroOS SUSE-MicroOS-defaults SUSE-MicroOS-hardware SUSE-MicroOS-apparmor SUSE-MicroOS-container-runtime</default_patterns>
         <!-- bnc#876760: Explicitly selecting these (optional) patterns by default if they exist -->
         <optional_default_patterns>32bit</optional_default_patterns>
 
@@ -243,7 +243,7 @@ textdomain="control"
         </services>
 
         <software>
-            <default_patterns>SUSE-MicroOS SUSE-MicroOS-hardware SUSE-MicroOS-apparmor kubeadm SUSE-MicroOS-container-runtime-kubernetes</default_patterns>
+            <default_patterns>SUSE-MicroOS SUSE-MicroOS-defaults SUSE-MicroOS-hardware SUSE-MicroOS-apparmor kubeadm SUSE-MicroOS-container-runtime-kubernetes</default_patterns>
         </software>
 
         <partitioning>
