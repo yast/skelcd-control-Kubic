@@ -16,6 +16,7 @@ textdomain="control"
         <enable_sshd config:type="boolean">true</enable_sshd>
         <timezone>UTC</timezone>
         <readonly_timezone config:type="boolean">false</readonly_timezone>
+        <readonly_language config:type="boolean">true</readonly_language>
 
         <!-- FATE #303875, see /etc/sysconfig/network/dhcp:WRITE_HOSTNAME_TO_HOSTS -->
         <write_hostname_to_hosts config:type="boolean">false</write_hostname_to_hosts>
