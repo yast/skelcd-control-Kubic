@@ -244,7 +244,7 @@ textdomain="control"
         </services>
 
         <software>
-            <default_patterns>microos microos_defaults microos_hardware microos_apparmor kubeadm container_runtime_kubernetes</default_patterns>
+            <default_patterns>microos_base microos_defaults microos_hardware microos_apparmor kubeadm container_runtime_kubernetes</default_patterns>
         </software>
 
         <partitioning>
