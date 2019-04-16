@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 16 14:22:53 UTC 2019 - Richard Brown <rbrown@suse.de>
+
+- Replace micro_os_role and description to be consistent with MicroOS media [boo#1131700]
+- 20190416
+
+-------------------------------------------------------------------
 Mon Apr 08 09:47:52 UTC 2019 - Richard Brown <rbrown@suse.de>
 
 - Fix kubeadm role to use correct patterns-microos pattern names [boo#1131700]
