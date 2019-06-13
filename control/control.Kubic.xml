@@ -125,6 +125,9 @@ textdomain="control"
         <!-- Try to install as few packages as possible: only required ones, no
              documentation and no multiversion (FATE#321764) -->
         <minimalistic_libzypp_config config:type="boolean">true</minimalistic_libzypp_config>
+      
+        <!-- boo#1124590 - Ensure correct product is selected -->
+        <select_product>openSUSE-MicroOS</select_product>
     </software>
 
     <partitioning>
@@ -175,6 +178,9 @@ textdomain="control"
                       </subvolume>
                       <subvolume>
                           <path>opt</path>
+                      </subvolume>
+                      <subvolume>
+                        <path>srv</path>
                       </subvolume>
 
                       <!-- architecture specific subvolumes -->
@@ -336,6 +342,9 @@ textdomain="control"
                         <subvolume>
                             <path>opt</path>
                         </subvolume>
+                        <subvolume>
+                            <path>srv</path>
+                        </subvolume>
 
                         <!-- architecture specific subvolumes -->
 
@@ -475,10 +484,10 @@ configured accordingly to match the use case of the role. &lt;/p&gt;</label>
         </container_host_role_description>
         <kubic_admin_role>
           <!-- TRANSLATORS: a label for a system role -->
-          <label>Kubic Admin Node (Alpha)</label>
+          <label>Kubic Admin Node</label>
         </kubic_admin_role>
         <kubic_admin_role_description>
-	        <label>• MicroOS with kubicd kubernetes deployment tool
+	        <label>• First MicroOS-based kubernetes Master Node
 • Uses CRI-O Container Runtime by default
 • Each kubic cluster requires at least one Admin Node
 • Create cluster with `kubicctl init`
@@ -486,7 +495,7 @@ configured accordingly to match the use case of the role. &lt;/p&gt;</label>
         </kubic_admin_role_description>
         <kubic_worker_role>
           <!-- TRANSLATORS: a label for a system role -->
-          <label>Kubic Worker Node (Alpha)</label>
+          <label>Kubic Worker Node</label>
         </kubic_worker_role>
         <kubic_worker_role_description>
 	        <label>• MicroOS-based kubernetes Worker Nodes
