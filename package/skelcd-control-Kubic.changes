@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 13 14:57:51 UTC 2019 - Richard Brown <rbrown@suse.de>
+
+- Add srv as a subvolume [boo#1132436]
+- Select product on installation [boo#1124590]
+- Remove (Alpha) tags from kubic roles [boo#1138180]
+- Fix kubic_admin role description [boo#1135973]
+- 20190613
+
+-------------------------------------------------------------------
 Mon Jun 03 12:43:53 UTC 2019 - Richard Brown <rbrown@suse.de>
 
 - Fix kubic_admin role service name [boo#1135980]

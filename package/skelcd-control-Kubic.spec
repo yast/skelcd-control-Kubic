@@ -121,7 +121,7 @@ Requires:       yast2-vm
 
 Url:            https://github.com/yast/skelcd-control-Kubic
 AutoReqProv:    off
-Version:        20190603
+Version:        20190613
 Release:        0
 Summary:        The Kubic control file needed for installation
 License:        MIT
