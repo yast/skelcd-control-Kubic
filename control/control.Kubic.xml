@@ -182,6 +182,9 @@ textdomain="control"
                       <subvolume>
                         <path>srv</path>
                       </subvolume>
+                      <subvolume>
+                        <path>boot/writable</path>
+                      </subvolume>
 
                       <!-- architecture specific subvolumes -->
 
@@ -344,6 +347,9 @@ textdomain="control"
                         </subvolume>
                         <subvolume>
                             <path>srv</path>
+                        </subvolume>
+			<subvolume>
+                            <path>boot/writable</path>
                         </subvolume>
 
                         <!-- architecture specific subvolumes -->
