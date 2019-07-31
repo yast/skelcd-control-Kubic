@@ -70,45 +70,15 @@ textdomain="control"
         <!-- bnc #431158: Adjusts /etc/sysconfig/security/POLKIT_DEFAULT_PRIVS if set -->
         <polkit_default_privs>restrictive</polkit_default_privs>
 
-        <!-- Used in services proposal -->
-        <services_proposal config:type="list">
-            <!-- FATE #305583: Start CIMOM by default -->
-            <service>
-                <!-- see 'texts' -->
-                <label_id>service_sfcb</label_id>
-                <service_names>sfcb</service_names>
-                <firewall_plugins>sblim-sfcb</firewall_plugins>
-                <enabled_by_default config:type="boolean">false</enabled_by_default>
-                <packages>sblim-sfcb</packages>
-            </service>
-        </services_proposal>
     </globals>
 
     <software>
         <!-- By default, unmaintained (old) packages are removed -->
         <delete_old_packages config:type="boolean">true</delete_old_packages>
-        <!-- For SLES12, unmaintained (old) packages are not removed by default, FATE #301844, bugzilla #233156 -->
-        <delete_old_packages_reverse_list config:type="list">
-            <regexp_item>^SUSE (LINUX|Linux) Enterprise Server 12.*$</regexp_item>
-        </delete_old_packages_reverse_list>
-
         <!-- By default, packages can be downgraded -->
         <silently_downgrade_packages config:type="boolean">true</silently_downgrade_packages>
-        <!-- For SLES12, packages are not downgraded, FATE #301990, bugzilla #238488 -->
-        <silently_downgrade_packages_reverse_list config:type="list">
-            <regexp_item>^SUSE (LINUX|Linux) Enterprise Server 12.*$</regexp_item>
-        </silently_downgrade_packages_reverse_list>
-
-        <!-- Only upgrading from SLES11 or SLES12 is supported, otherwise warning is displayed -->
-        <products_supported_for_upgrade config:type="list">
-            <regexp_item>^SUSE (LINUX|Linux) Enterprise Server 11.*$</regexp_item>
-            <regexp_item>^SUSE (LINUX|Linux) Enterprise Server 12.*$</regexp_item>
-        </products_supported_for_upgrade>
 
         <selection_type config:type="symbol">auto</selection_type>
-
-        <!-- bnc#875350: Explicitly selecting these patterns by default -->
-        <!-- For a list of patterns, see https://build.suse.de/package/view_file/SUSE:SLE-12-SP2:Update:Products:CASP10/patterns-caasp/patterns-caasp.spec?expand=1 -->
 
         <default_patterns>microos_base microos_defaults microos_hardware microos_apparmor container_runtime</default_patterns>
         <!-- bnc#876760: Explicitly selecting these (optional) patterns by default if they exist -->
@@ -125,7 +95,7 @@ textdomain="control"
         <!-- Try to install as few packages as possible: only required ones, no
              documentation and no multiversion (FATE#321764) -->
         <minimalistic_libzypp_config config:type="boolean">true</minimalistic_libzypp_config>
-      
+
         <!-- boo#1124590 - Ensure correct product is selected -->
         <select_product>openSUSE-MicroOS</select_product>
     </software>
@@ -184,6 +154,9 @@ textdomain="control"
                       </subvolume>
                       <subvolume>
                         <path>boot/writable</path>
+                      </subvolume>
+                      <subvolume>
+                        <path>usr/local</path>
                       </subvolume>
 
                       <!-- architecture specific subvolumes -->
@@ -262,7 +235,7 @@ textdomain="control"
         <order config:type="integer">110</order>
         <additional_dialogs>inst_kubic_kubeadm_role</additional_dialogs>
       </system_role>
-      
+
       <system_role>
         <id>kubic_worker_role</id>
 
@@ -277,25 +250,14 @@ textdomain="control"
         <order config:type="integer">120</order>
         <additional_dialogs>inst_kubic_kubeadm_role</additional_dialogs>
       </system_role>
-      
-      <system_role>
-        <id>kubeadm_role</id>
 
-        <services config:type="list">
-          <service><name>kubelet</name></service>
-        </services>
+      <system_role>
+        <id>kubic_lb_role</id>
 
         <software>
-            <default_patterns>microos_base microos_defaults microos_hardware microos_apparmor kubeadm container_runtime_kubernetes</default_patterns>
+            <default_patterns>microos_base microos_defaults microos_hardware microos_apparmor kubic_loadbalancer</default_patterns>
         </software>
 
-        <order config:type="integer">200</order>
-        <additional_dialogs>inst_kubic_kubeadm_role</additional_dialogs>
-      </system_role>
-
-      <system_role>
-        <id>container_host_role</id>
-        
         <partitioning>
             <expert_partitioner_warning config:type="boolean">true</expert_partitioner_warning>
 
@@ -351,6 +313,9 @@ textdomain="control"
 			<subvolume>
                             <path>boot/writable</path>
                         </subvolume>
+                      <subvolume>
+                        <path>usr/local</path>
+                      </subvolume>
 
                         <!-- architecture specific subvolumes -->
 
@@ -403,7 +368,139 @@ textdomain="control"
             </volumes>
         </partitioning>
 
-        <order config:type="integer">100</order>
+        <order config:type="integer">130</order>
+        <additional_dialogs>inst_kubic_kubeadm_role</additional_dialogs>
+      </system_role>
+
+      <system_role>
+        <id>kubeadm_role</id>
+
+        <services config:type="list">
+          <service><name>kubelet</name></service>
+        </services>
+
+        <software>
+            <default_patterns>microos_base microos_defaults microos_hardware microos_apparmor kubeadm container_runtime_kubernetes</default_patterns>
+        </software>
+
+        <order config:type="integer">200</order>
+        <additional_dialogs>inst_kubic_kubeadm_role</additional_dialogs>
+      </system_role>
+
+      <system_role>
+        <id>container_host_role</id>
+
+        <partitioning>
+            <expert_partitioner_warning config:type="boolean">true</expert_partitioner_warning>
+
+            <proposal>
+                <lvm config:type="boolean">false</lvm>
+                <proposal_settings_editable config:type="boolean">true</proposal_settings_editable>
+                <windows_delete_mode config:type="symbol">all</windows_delete_mode>
+                <linux_delete_mode config:type="symbol">all</linux_delete_mode>
+                <other_delete_mode config:type="symbol">all</other_delete_mode>
+            </proposal>
+
+            <volumes config:type="list">
+                <!-- The / filesystem -->
+                <volume>
+                    <mount_point>/</mount_point>
+                    <!-- Default == final, since the user can't change it -->
+                    <fs_type>btrfs</fs_type>
+                    <desired_size config:type="disksize">20 GiB</desired_size>
+                    <min_size config:type="disksize">11 GiB</min_size>
+                    <max_size config:type="disksize">40 GiB</max_size>
+                    <weight config:type="integer">20</weight>
+                    <!-- Always use snapshots, no matter what -->
+                    <snapshots config:type="boolean">true</snapshots>
+                    <snapshots_configurable config:type="boolean">false</snapshots_configurable>
+
+                    <!-- You don't want to miss the / volume -->
+                    <proposed_configurable config:type="boolean">false</proposed_configurable>
+
+                    <!-- the default subvolume "@" was requested by product management -->
+                    <btrfs_default_subvolume>@</btrfs_default_subvolume>
+                    <!-- root filesystem should be read-only -->
+                    <btrfs_read_only config:type="boolean">true</btrfs_read_only>
+
+                    <!-- Subvolumes to be created for a Btrfs root file system -->
+                    <!-- copy_on_write is true by default -->
+                    <!-- The XML parser is very simplistic, thus not using attributes, but sub-elements -->
+                    <subvolumes config:type="list">
+                        <subvolume>
+                            <path>root</path>
+                        </subvolume>
+                        <subvolume>
+                            <path>tmp</path>
+                        </subvolume>
+                        <subvolume>
+                            <path>home</path>
+                        </subvolume>
+                        <subvolume>
+                            <path>opt</path>
+                        </subvolume>
+                        <subvolume>
+                            <path>srv</path>
+                        </subvolume>
+			<subvolume>
+                            <path>boot/writable</path>
+                        </subvolume>
+                      <subvolume>
+                        <path>usr/local</path>
+                      </subvolume>
+
+                        <!-- architecture specific subvolumes -->
+
+                        <subvolume>
+                            <path>boot/grub2/arm64-efi</path>
+                            <archs>aarch64</archs>
+                        </subvolume>
+                        <subvolume>
+                            <path>boot/grub2/i386-pc</path>
+                            <archs>x86_64</archs>
+                        </subvolume>
+                        <subvolume>
+                            <path>boot/grub2/powerpc-ieee1275</path>
+                            <archs>ppc,!board_powernv</archs>
+                        </subvolume>
+                        <subvolume>
+                            <path>boot/grub2/s390x-emu</path>
+                            <archs>s390</archs>
+                        </subvolume>
+                        <subvolume>
+                            <path>boot/grub2/x86_64-efi</path>
+                            <archs>x86_64</archs>
+                        </subvolume>
+                    </subvolumes>
+                </volume>
+
+                <volume>
+                    <!-- unified var partition - https://lists.opensuse.org/opensuse-packaging/2017-11/msg00017.html -->
+                    <mount_point>/var</mount_point>
+                    <!-- Default == final, since the user can't change it -->
+                    <fs_type>btrfs</fs_type>
+                    <snapshots config:type="boolean">false</snapshots>
+                    <snapshots_configurable config:type="boolean">false</snapshots_configurable>
+
+                    <desired_size config:type="disksize">19 GiB</desired_size>
+                    <min_size config:type="disksize">8 GiB</min_size>
+                    <max_size config:type="disksize">unlimited</max_size>
+                    <weight config:type="integer">40</weight>
+
+                    <!-- Give up in a separate partition if the min size doesn't fit -->
+                    <disable_order config:type="integer">1</disable_order>
+
+                    <!-- If this volume is disabled, we want "/" to increase -->
+                    <fallback_for_desired_size>/</fallback_for_desired_size>
+                    <fallback_for_max_size>/</fallback_for_max_size>
+                    <fallback_for_weight>/</fallback_for_weight>
+                </volume>
+
+                <!-- No swap partition is defined, so it's never created -->
+            </volumes>
+        </partitioning>
+
+        <order config:type="integer">300</order>
 
       </system_role>
     </system_roles>
@@ -501,16 +598,27 @@ configured accordingly to match the use case of the role. &lt;/p&gt;</label>
         </kubic_admin_role_description>
         <kubic_worker_role>
           <!-- TRANSLATORS: a label for a system role -->
-          <label>Kubic Worker Node</label>
+          <label>Additional Kubic Node</label>
         </kubic_worker_role>
         <kubic_worker_role_description>
-	        <label>• MicroOS-based kubernetes Worker Nodes
+	        <label>• MicroOS-based kubernetes Node for additional Worker or Master
 • Uses CRI-O Container Runtime by default
-• Each Worker Node must be configured to connect to an Admin Node          
+• Each additional Node must be configured to connect to an Admin Node
 • Configure Admin Nodes hostname with `echo "master: $hostname" > /etc/salt/minion.d/master.conf`
 • Start salt with `systemctl enable --now salt-minion`
-• On the Admin Node run `salt-key -A` to accept the new Worker Node</label>
+• On the Admin Node run `salt-key -A` to accept the new Node</label>
         </kubic_worker_role_description>
+        <kubic_lb_role>
+          <!-- TRANSLATORS: a label for a system role -->
+          <label>Kubic Loadbalancer Node</label>
+        </kubic_lb_role>
+        <kubic_lb_role_description>
+	        <label>• MicroOS-based Loadbalancer for Kubernets API server using HAProxy
+• Loadbalancer Node must be configured to connect to an Admin Node
+• Configure Admin Nodes hostname with `echo "master: $hostname" > /etc/salt/minion.d/master.conf`
+• Start salt with `systemctl enable --now salt-minion`
+• On the Admin Node run `salt-key -A` to accept the new Loadbalancer Node</label>
+        </kubic_lb_role_description>
     </texts>
 
     <proposals config:type="list">
