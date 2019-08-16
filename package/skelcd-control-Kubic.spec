@@ -47,7 +47,7 @@ BuildRequires:  skelcd-control-openSUSE
 
 # Kubic specific Yast packages needed in the inst-sys
 # to provide the functionality needed by this control file
-Requires:       yast2-caasp >= 4.3.0
+Requires:       yast2-caasp >= 4.2.1
 
 # branding
 Requires:       yast2-theme
