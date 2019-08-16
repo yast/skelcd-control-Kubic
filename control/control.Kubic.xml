@@ -233,7 +233,7 @@ textdomain="control"
         </software>
 
         <order config:type="integer">110</order>
-        <additional_dialogs>inst_kubic_kubeadm_role</additional_dialogs>
+        <additional_dialogs>inst_microos_role</additional_dialogs>
       </system_role>
 
       <system_role>
@@ -248,7 +248,7 @@ textdomain="control"
         </software>
 
         <order config:type="integer">120</order>
-        <additional_dialogs>inst_kubic_kubeadm_role</additional_dialogs>
+        <additional_dialogs>inst_kubic_minion_role</additional_dialogs>
       </system_role>
 
       <system_role>
@@ -369,7 +369,7 @@ textdomain="control"
         </partitioning>
 
         <order config:type="integer">130</order>
-        <additional_dialogs>inst_kubic_kubeadm_role</additional_dialogs>
+        <additional_dialogs>inst_kubic_minion_role</additional_dialogs>
       </system_role>
 
       <system_role>
@@ -501,6 +501,7 @@ textdomain="control"
         </partitioning>
 
         <order config:type="integer">300</order>
+        <additional_dialogs>inst_microos_role</additional_dialogs>
 
       </system_role>
     </system_roles>
@@ -603,9 +604,6 @@ configured accordingly to match the use case of the role. &lt;/p&gt;</label>
         <kubic_worker_role_description>
 	        <label>• MicroOS-based kubernetes Node for additional Worker or Master
 • Uses CRI-O Container Runtime by default
-• Each additional Node must be configured to connect to an Admin Node
-• Configure Admin Nodes hostname with `echo "master: $hostname" > /etc/salt/minion.d/master.conf`
-• Start salt with `systemctl enable --now salt-minion`
 • On the Admin Node run `salt-key -A` to accept the new Node</label>
         </kubic_worker_role_description>
         <kubic_lb_role>
@@ -613,10 +611,7 @@ configured accordingly to match the use case of the role. &lt;/p&gt;</label>
           <label>Kubic Loadbalancer Node</label>
         </kubic_lb_role>
         <kubic_lb_role_description>
-	        <label>• MicroOS-based Loadbalancer for Kubernets API server using HAProxy
-• Loadbalancer Node must be configured to connect to an Admin Node
-• Configure Admin Nodes hostname with `echo "master: $hostname" > /etc/salt/minion.d/master.conf`
-• Start salt with `systemctl enable --now salt-minion`
+		<label>• MicroOS-based Loadbalancer for Kubernets API server using HAProxy
 • On the Admin Node run `salt-key -A` to accept the new Loadbalancer Node</label>
         </kubic_lb_role_description>
     </texts>
