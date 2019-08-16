@@ -2,7 +2,7 @@
 Thu Aug 15 16:41:03 CEST 2019 - kukuk@suse.de
 
 - Add dialog to configure salt-minion where needed [bsc#1145768]
-- Require yast2-caasp >= 4.3.0
+- Require yast2-caasp >= 4.2.1
 - 20190815
 
 -------------------------------------------------------------------
