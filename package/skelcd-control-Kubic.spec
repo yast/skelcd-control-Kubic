@@ -31,7 +31,7 @@ Name:           skelcd-control-Kubic
 # xmllint (for validation)
 BuildRequires:  libxml2-tools
 # RNG validation schema
-BuildRequires:  yast2-installation-control >= 4.0.10
+BuildRequires:  yast2-installation-control >= 4.2.8
 
 # xsltproc - for building control.TWKubic.xml from control.Kubic.xml
 BuildRequires:  libxslt-tools
