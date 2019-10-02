@@ -47,6 +47,9 @@ textdomain="control"
         <show_addons config:type="boolean">true</show_addons>
         <addons_default config:type="boolean">false</addons_default>
 
+        <!-- casp require precise time for its work -->
+        <precise_time config:type="boolean">true</precise_time>
+
         <!-- FATE #301937, Save /root content from the installation system to the installed system -->
         <save_instsys_content config:type="list">
             <save_instsys_item>
