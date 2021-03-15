@@ -83,7 +83,7 @@ textdomain="control"
 
         <selection_type config:type="symbol">auto</selection_type>
 
-        <default_patterns>microos_base microos_defaults microos_hardware microos_apparmor container_runtime</default_patterns>
+        <default_patterns>microos_base microos_base_zypper microos_defaults microos_hardware microos_apparmor container_runtime</default_patterns>
         <!-- bnc#876760: Explicitly selecting these (optional) patterns by default if they exist -->
         <optional_default_patterns>32bit</optional_default_patterns>
 
@@ -228,7 +228,7 @@ textdomain="control"
         </services>
 
         <software>
-            <default_patterns>microos_base microos_defaults microos_hardware microos_apparmor kubic_admin</default_patterns>
+            <default_patterns>microos_base microos_base_zypper microos_defaults microos_hardware microos_apparmor kubic_admin</default_patterns>
         </software>
 
         <order config:type="integer">110</order>
@@ -243,7 +243,7 @@ textdomain="control"
         </services>
 
         <software>
-            <default_patterns>microos_base microos_defaults microos_hardware microos_apparmor kubic_worker</default_patterns>
+            <default_patterns>microos_base microos_base_zypper microos_defaults microos_hardware microos_apparmor kubic_worker</default_patterns>
         </software>
 
         <order config:type="integer">120</order>
@@ -254,7 +254,7 @@ textdomain="control"
         <id>kubic_lb_role</id>
 
         <software>
-            <default_patterns>microos_base microos_defaults microos_hardware microos_apparmor kubic_loadbalancer</default_patterns>
+            <default_patterns>microos_base microos_base_zypper microos_defaults microos_hardware microos_apparmor kubic_loadbalancer</default_patterns>
         </software>
 
         <order config:type="integer">130</order>
@@ -269,7 +269,7 @@ textdomain="control"
         </services>
 
         <software>
-            <default_patterns>microos_base microos_defaults microos_hardware microos_apparmor kubeadm container_runtime_kubernetes</default_patterns>
+            <default_patterns>microos_base microos_base_zypper microos_defaults microos_hardware microos_apparmor kubeadm container_runtime_kubernetes</default_patterns>
         </software>
 
         <order config:type="integer">200</order>
