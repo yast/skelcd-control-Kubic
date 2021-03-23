@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 23 07:28:11 EDT 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Drop AppArmor and always install SELinux (boo#1183894)
+- 20210323
+
+-------------------------------------------------------------------
 Tue Mar  9 08:21:56 EST 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Set package manager patterns for Kubic roles (boo#1182803, boo#1183231)
