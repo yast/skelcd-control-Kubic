@@ -227,7 +227,7 @@ textdomain="control"
           <service><name>kubicd</name></service>
         </services>
 
-	<network>
+        <network>
           <ipv4_forward config:type="boolean">true</ipv4_forward>
           <ipv6_forward config:type="boolean">true</ipv6_forward>
         </network>
@@ -247,7 +247,7 @@ textdomain="control"
           <service><name>kubelet</name></service>
         </services>
 
-	<network>
+        <network>
           <ipv4_forward config:type="boolean">true</ipv4_forward>
           <ipv6_forward config:type="boolean">true</ipv6_forward>
         </network>
@@ -263,7 +263,7 @@ textdomain="control"
       <system_role>
         <id>kubic_lb_role</id>
 
-	<network>
+        <network>
           <ipv4_forward config:type="boolean">true</ipv4_forward>
           <ipv6_forward config:type="boolean">true</ipv6_forward>
         </network>
@@ -283,7 +283,7 @@ textdomain="control"
           <service><name>kubelet</name></service>
         </services>
 
-	<network>
+        <network>
           <ipv4_forward config:type="boolean">true</ipv4_forward>
           <ipv6_forward config:type="boolean">true</ipv6_forward>
         </network>
@@ -302,7 +302,7 @@ textdomain="control"
         <order config:type="integer">300</order>
         <additional_dialogs>inst_microos_role</additional_dialogs>
 
-	<network>
+        <network>
           <ipv4_forward config:type="boolean">true</ipv4_forward>
           <ipv6_forward config:type="boolean">true</ipv6_forward>
         </network>
