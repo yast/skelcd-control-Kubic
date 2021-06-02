@@ -213,6 +213,8 @@ textdomain="control"
         <force_static_ip config:type="boolean">false</force_static_ip>
         <network_manager>never</network_manager>
         <startmode>auto</startmode>
+        <ipv4_forward config:type="boolean">true</ipv4_forward>
+        <ipv6_forward config:type="boolean">true</ipv6_forward>
     </network>
 
     <!-- FATE#317481 -->
@@ -226,11 +228,6 @@ textdomain="control"
           <service><name>kubicd-init</name></service>
           <service><name>kubicd</name></service>
         </services>
-
-        <network>
-          <ipv4_forward config:type="boolean">true</ipv4_forward>
-          <ipv6_forward config:type="boolean">true</ipv6_forward>
-        </network>
 
         <software>
             <default_patterns>microos_base microos_base_zypper microos_defaults microos_hardware microos_apparmor kubic_admin</default_patterns>
@@ -247,11 +244,6 @@ textdomain="control"
           <service><name>kubelet</name></service>
         </services>
 
-        <network>
-          <ipv4_forward config:type="boolean">true</ipv4_forward>
-          <ipv6_forward config:type="boolean">true</ipv6_forward>
-        </network>
-
         <software>
             <default_patterns>microos_base microos_base_zypper microos_defaults microos_hardware microos_apparmor kubic_worker</default_patterns>
         </software>
@@ -262,11 +254,6 @@ textdomain="control"
 
       <system_role>
         <id>kubic_lb_role</id>
-
-        <network>
-          <ipv4_forward config:type="boolean">true</ipv4_forward>
-          <ipv6_forward config:type="boolean">true</ipv6_forward>
-        </network>
 
         <software>
             <default_patterns>microos_base microos_base_zypper microos_defaults microos_hardware microos_apparmor kubic_loadbalancer</default_patterns>
@@ -283,11 +270,6 @@ textdomain="control"
           <service><name>kubelet</name></service>
         </services>
 
-        <network>
-          <ipv4_forward config:type="boolean">true</ipv4_forward>
-          <ipv6_forward config:type="boolean">true</ipv6_forward>
-        </network>
-
         <software>
             <default_patterns>microos_base microos_base_zypper microos_defaults microos_hardware microos_apparmor kubeadm container_runtime_kubernetes</default_patterns>
         </software>
@@ -301,11 +283,6 @@ textdomain="control"
 
         <order config:type="integer">300</order>
         <additional_dialogs>inst_microos_role</additional_dialogs>
-
-        <network>
-          <ipv4_forward config:type="boolean">true</ipv4_forward>
-          <ipv6_forward config:type="boolean">true</ipv6_forward>
-        </network>
 
       </system_role>
     </system_roles>
