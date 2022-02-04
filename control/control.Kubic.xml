@@ -218,9 +218,7 @@ textdomain="control"
     </partitioning>
 
     <network>
-        <force_static_ip config:type="boolean">false</force_static_ip>
-        <network_manager>never</network_manager>
-        <startmode>auto</startmode>
+        <network_manager>always</network_manager>
         <ipv4_forward config:type="boolean">true</ipv4_forward>
         <ipv6_forward config:type="boolean">true</ipv6_forward>
     </network>
